@@ -15,7 +15,7 @@
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" data-header>
       <a class="brand" href="#home" aria-label="Drone2Leaf home">
-        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <img class="brand-logo" src="assets/images/d2l-logo.svg" alt="" width="40" height="40" />
         <span>Drone2Leaf</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -40,6 +40,7 @@
           <div class="hero-partners" aria-label="Project collaboration">
             <span>Australian Plant Phenomics Network</span>
             <span>ANU <i aria-hidden="true">×</i> Western Sydney University</span>
+            <span>Supported by the Central Data Team and ANU TechLauncher through PlantDIs</span>
           </div>
         </div>
         <figure class="flight-feature" id="flight" aria-labelledby="flight-title">
@@ -69,11 +70,17 @@
             <span class="scene-title"><span class="live-dot" aria-hidden="true"></span>Drone2Leaf / Project illustration</span>
             <button class="scene-toggle" type="button" data-scene-toggle aria-label="Pause animation" hidden><span data-toggle-icon aria-hidden="true">Ⅱ</span><span data-toggle-label>Pause</span></button>
           </div>
-          <div class="particle-visual" role="img" aria-label="Particle illustration: a drone flies inside a glasshouse above rows of plants, individual leaves are outlined, then leaves showing disease are highlighted in amber.">
+          <div class="particle-visual" role="img" aria-label="Particle illustration: a drone flies inside a glasshouse above light green plants, detected leaves turn dark green with blue bounding boxes, then leaves showing disease are highlighted in amber.">
             <canvas width="960" height="500" aria-hidden="true"></canvas>
             <noscript><p class="scene-fallback">Drone flight → Individual leaves → Disease detection</p></noscript>
           </div>
-          <div class="scene-legend" aria-label="Illustration colour key"><span><i class="legend-leaf" aria-hidden="true"></i>Individual leaf</span><span><i class="legend-disease" aria-hidden="true"></i>Signs of disease</span><span class="interaction-hint">Move your pointer through the particles</span></div>
+          <div class="scene-legend" aria-label="Illustration colour key">
+            <span><i class="legend-leaf" aria-hidden="true"></i>Leaves</span>
+            <span><i class="legend-detected" aria-hidden="true"></i>Detected leaf</span>
+            <span><i class="legend-box" aria-hidden="true"></i>Detection box</span>
+            <span><i class="legend-disease" aria-hidden="true"></i>Signs of disease</span>
+            <span class="interaction-hint">Move your pointer through the particles</span>
+          </div>
           <div class="scene-stages" role="group" aria-label="Choose an illustration stage">
             <button type="button" data-scene-stage="0" aria-pressed="true"><span class="stage-number">01</span><span>Drone flight</span><span class="stage-progress" aria-hidden="true"></span></button>
             <button type="button" data-scene-stage="1" aria-pressed="false"><span class="stage-number">02</span><span>Individual leaves</span><span class="stage-progress" aria-hidden="true"></span></button>
@@ -110,8 +117,34 @@
           <p class="project-lede">Our team has completed a major round of indoor drone data collection at Western Sydney University.</p>
           <p>Flying in a glasshouse means navigating confined spaces and capturing plants from different heights and angles. The flight film offers a glimpse of that work.</p>
           <div class="project-people">
-            <div><span>Project lead</span><strong>Saswat Panda</strong><p>APPN · ANU Node</p></div>
-            <div><span>Operations &amp; deployment lead</span><strong>Ming Dao Chia</strong><p>Drone2Leaf</p></div>
+            <div><span>Project lead</span><strong>Mr. Saswat Panda</strong><p>APPN · ANU Node</p></div>
+            <div><span>Operation and Automation Lead</span><strong>Mr. Ming Dao Chia</strong><p>Drone2Leaf</p></div>
+          </div>
+          <div class="project-collaborators">
+            <h3>Collaborators</h3>
+            <ul class="collaborator-list">
+              <li>Dr. Tao Hu</li>
+              <li>Dr. Dat Pham</li>
+              <li>Mr. Scott Allchin</li>
+              <li>Dr. Supriyo Shafkat Ahmed</li>
+              <li>Richard Poire</li>
+              <li>Prof. Mark Tjoelker</li>
+              <li>Prof. Danielle Way</li>
+            </ul>
+            <div class="project-students">
+              <h3>ANU TechLauncher students</h3>
+              <p>PlantDIs project</p>
+              <ul class="collaborator-list">
+                <li>Hanxiao Ma</li>
+                <li>Yubin Zhan</li>
+                <li>Zongjing Han</li>
+                <li>Mukul Sharma</li>
+              </ul>
+            </div>
+            <div class="project-support">
+              <h3>Project support</h3>
+              <p>The project is also supported by the Central Data Team and by the TechLauncher program at ANU through the PlantDIs project.</p>
+            </div>
           </div>
           <p class="project-credit">Led through the Australian Plant Phenomics Network (APPN) ANU Node, in collaboration with the WSU APPN Node, with support from the APPN SIF program.</p>
         </div>
@@ -119,9 +152,15 @@
     </main>
 
     <footer class="site-footer">
-      <div><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Drone2Leaf</span></a><p>From the glasshouse to the leaf.</p></div>
+      <div><a class="brand" href="#home"><img class="brand-logo" src="assets/images/d2l-logo.svg" alt="" width="40" height="40" /><span>Drone2Leaf</span></a><p>From the glasshouse to the leaf.</p></div>
       <div class="footer-links"><a href="https://github.com/drone2leaf/drone2leaf.github.io">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.plantphenomics.org.au/">APPN <span aria-hidden="true">↗</span></a><a href="#home">Back to top ↑</a></div>
-      <p class="copyright">© <span data-year>2026</span> Drone2Leaf</p>
+      <div class="footer-bottom">
+        <p class="copyright">© <span data-year>2026</span> Drone2Leaf</p>
+        <a class="view-counter" href="https://hits.sh/drone2leaf.github.io/" aria-label="View Drone2Leaf page-view statistics">
+          <span data-view-counter-placeholder>Page views: —</span>
+          <img data-view-counter alt="Total Drone2Leaf page views" height="20" hidden />
+        </a>
+      </div>
     </footer>
   </body>
 </html>

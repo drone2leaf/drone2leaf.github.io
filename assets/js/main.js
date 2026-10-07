@@ -6,6 +6,22 @@ const year = document.querySelector('[data-year]');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 if (year) year.textContent = new Date().getFullYear();
+
+// A shared total for the published site; local previews do not send counter hits.
+const viewCounter = document.querySelector('[data-view-counter]');
+const counterPlaceholder = document.querySelector('[data-view-counter-placeholder]');
+if (viewCounter && counterPlaceholder && window.location.hostname === 'drone2leaf.github.io') {
+  viewCounter.addEventListener('load', () => {
+    counterPlaceholder.hidden = true;
+    viewCounter.hidden = false;
+  }, { once: true });
+  viewCounter.addEventListener('error', () => {
+    counterPlaceholder.textContent = 'Page views: unavailable';
+    viewCounter.hidden = true;
+  }, { once: true });
+  viewCounter.src = 'https://hits.sh/drone2leaf.github.io.svg?style=flat-square&label=page%20views&color=bcf2a1&labelColor=18362d';
+}
+
 const syncHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
 syncHeader();
 window.addEventListener('scroll', syncHeader, { passive: true });

@@ -22,11 +22,7 @@ figure, p { margin: 0; }
 .site-header { position: fixed; z-index: 100; top: 20px; left: 50%; width: min(calc(100% - 48px), var(--max)); min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 9px 10px 9px 22px; border: 1px solid #ffffff20; border-radius: 15px; color: var(--white); background: #071713db; backdrop-filter: blur(18px); transform: translateX(-50%); }
 .site-header.is-scrolled { background: #071713f5; box-shadow: 0 12px 35px #07171320; }
 .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 1.04rem; font-weight: 750; letter-spacing: -.03em; text-decoration: none; }
-.brand-mark { position: relative; width: 29px; height: 29px; display: inline-grid; place-items: center; border: 1px solid #ffffff50; border-radius: 50%; }
-.brand-mark span { position: absolute; width: 10px; height: 4px; border-radius: 50% 10% 50% 10%; background: var(--lime); transform-origin: 100% 50%; }
-.brand-mark span:nth-child(1) { transform: translate(-3px,-4px) rotate(34deg); }
-.brand-mark span:nth-child(2) { transform: translate(3px,1px) rotate(-24deg); }
-.brand-mark span:nth-child(3) { width: 1px; height: 15px; transform: rotate(-35deg); }
+.brand-logo { display: block; width: 40px; height: 40px; flex: 0 0 40px; padding: 4px; border-radius: 9px; background: var(--paper); object-fit: contain; }
 .site-nav { display: flex; align-items: center; gap: 28px; }
 .site-nav a { color: #ffffffc4; font-size: .82rem; font-weight: 600; text-decoration: none; }
 .site-nav a:hover { color: var(--white); }
@@ -88,9 +84,11 @@ h1 em, .section h2 em { color: var(--lime); font-family: Georgia, "Times New Rom
 .particle-visual { position: relative; aspect-ratio: 960 / 500; margin: 0 5%; background: radial-gradient(ellipse at center, #f8fbf4a0, transparent 75%); }
 .particle-visual canvas { display: block; width: 100%; height: 100%; }
 .scene-fallback { display: grid; position: absolute; inset: 0; place-content: center; padding: 20px; font-size: 1rem; }
-.scene-legend { display: flex; align-items: center; gap: 22px; padding: 8px 25px 22px; color: #5a6e5e; font-size: .67rem; }
+.scene-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding: 8px 25px 22px; color: #5a6e5e; font-size: .67rem; }
 .scene-legend > span { display: inline-flex; align-items: center; gap: 7px; }
-.scene-legend i { width: 6px; height: 6px; border-radius: 50%; background: #348261; }
+.scene-legend i { width: 6px; height: 6px; border-radius: 50%; background: #95bd78; }
+.scene-legend .legend-detected { background: #21633f; }
+.scene-legend .legend-box { width: 8px; height: 8px; border: 1.3px solid #3b78bc; border-radius: 1px; background: transparent; }
 .scene-legend .legend-disease { background: #bc651e; }
 .scene-legend .interaction-hint { margin-left: auto; color: #697b6c; }
 .scene-stages { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #24413426; }
@@ -125,17 +123,30 @@ h1 em, .section h2 em { color: var(--lime); font-family: Georgia, "Times New Rom
 .project { display: grid; grid-template-columns: 1fr 1fr; gap: 85px; padding: 70px 0 110px; border-top: 1px solid #24413426; }
 .project-lede { margin-bottom: 20px; color: var(--ink); font-size: 1.3rem; line-height: 1.6; letter-spacing: -.02em; }
 .project-copy > p:not(.project-lede) { color: var(--ink-soft); font-size: .88rem; }
-.project-people { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 34px 0; padding: 25px 0; border-top: 1px solid #24413426; border-bottom: 1px solid #24413426; }
+.project-people { display: grid; grid-template-columns: minmax(0, 1fr); gap: 25px; margin: 34px 0; padding: 25px 0; border-top: 1px solid #24413426; border-bottom: 1px solid #24413426; }
 .project-people span { display: block; color: var(--ink-soft); font-size: .65rem; }
 .project-people strong { display: block; margin: 7px 0 3px; font-size: .98rem; font-weight: 650; }
 .project-people p { color: var(--ink-soft); font-size: .74rem; }
+.project-collaborators { margin-bottom: 28px; }
+.project-collaborators h3 { margin: 0; color: #28775a; font-size: .68rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+.collaborator-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; margin: 18px 0; padding: 0; list-style: none; }
+.collaborator-list li { color: var(--ink); font-size: .86rem; }
+.project-students { margin-top: 26px; }
+.project-students > p { margin-top: 8px; color: var(--ink-soft); font-size: .75rem; }
+.project-support { margin-top: 26px; }
+.project-support p { margin-top: 12px; color: var(--ink-soft); font-size: .82rem; line-height: 1.8; }
 .project-copy > .project-credit { font-size: .75rem; line-height: 1.9; }
 .site-footer { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px; padding: 45px max(24px, calc((100% - var(--max)) / 2)) 25px; background: var(--forest); color: var(--white); }
 .site-footer > div > p { margin-top: 10px; font-size: .74rem; color: #aabeb1; }
 .footer-links { display: flex; align-items: center; gap: 28px; color: #c1cec7; font-size: .75rem; }
 .footer-links a { text-decoration: none; }
 .footer-links a:hover { color: var(--lime); }
-.copyright { grid-column: 1 / -1; padding-top: 22px; border-top: 1px solid #ffffff20; color: #aabeb1; font-size: .65rem; }
+.footer-bottom { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 22px; border-top: 1px solid #ffffff20; }
+.copyright { color: #aabeb1; font-size: .65rem; }
+.view-counter { display: inline-flex; align-items: center; min-height: 20px; color: #aabeb1; font-size: .7rem; text-decoration: none; }
+.view-counter:hover { color: var(--lime); }
+.view-counter img { display: block; width: auto; height: 20px; max-width: 180px; border-radius: 3px; }
+.view-counter img[hidden] { display: none; }
 
 @media (min-width: 1500px) { .hero { padding-top: 220px; } .hero-bottom { margin-top: 60px; } }
 @media (max-width: 1020px) {
@@ -164,7 +175,7 @@ h1 em, .section h2 em { color: var(--lime); font-family: Georgia, "Times New Rom
   .vision { padding: 70px 0; }
   .scene-toolbar { padding: 15px; }
   .particle-visual { margin: 0; }
-  .scene-legend { gap: 15px; padding: 8px 15px 18px; }
+  .scene-legend { gap: 9px 15px; padding: 8px 15px 18px; }
   .scene-legend .interaction-hint { display: none; }
   .scene-stages button { align-items: flex-start; flex-direction: column; gap: 4px; padding: 15px 13px; font-size: .76rem; }
   .first-look { padding-bottom: 70px; }
@@ -187,6 +198,8 @@ h1 em, .section h2 em { color: var(--lime); font-family: Georgia, "Times New Rom
   .scene-stages button { font-size: .68rem; padding-left: 10px; padding-right: 10px; }
   .project-people { gap: 18px; }
   .project-people span { font-size: .61rem; }
+  .collaborator-list { gap: 10px 15px; }
+  .collaborator-list li { font-size: .8rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

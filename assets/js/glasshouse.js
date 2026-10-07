@@ -17,6 +17,13 @@
   const STAGE_TIME = 6500;
   const CYCLE_TIME = STAGE_TIME * 3;
   const TAU = Math.PI * 2;
+  const COLOURS = {
+    leaf: '#95bd78',
+    stem: '#83a875',
+    detectedLeaf: '#21633f',
+    detectionBox: '#3b78bc',
+    disease: '#bc651e'
+  };
   const pointer = { x: 0, y: 0, active: false };
   const particles = [];
   const leaves = [];
@@ -203,10 +210,10 @@
     const top = leaf.y - 19;
     const right = leaf.x + 29;
     const bottom = leaf.y + 19;
-    const color = diseased ? '#bc651e' : '#368568';
+    const color = diseased ? COLOURS.disease : COLOURS.detectionBox;
     context.strokeStyle = color;
     context.fillStyle = color;
-    context.globalAlpha = diseased ? .95 : .56;
+    context.globalAlpha = diseased ? .95 : .85;
     context.lineWidth = 1.1;
     context.beginPath();
     [[left, top, 1, 1], [right, top, -1, 1], [left, bottom, 1, -1], [right, bottom, -1, -1]].forEach(([x, y, dx, dy]) => {
@@ -265,11 +272,12 @@
 
     for (const particle of particles) {
       let alpha = .72;
-      let color = '#49865e';
+      let color = COLOURS.stem;
+      if (particle.kind === 'leaf') { color = COLOURS.leaf; alpha = .88; }
       if (particle.kind === 'house') { color = '#698d88'; alpha = .45; }
       if (particle.kind === 'bench') { color = '#769278'; alpha = .35; }
-      if (particle.leaf && leafDetected(particle.leaf)) { color = '#248565'; alpha = .95; }
-      if (particle.leaf && diseasedDetected(particle.leaf)) { color = '#bc651e'; alpha = .95; }
+      if (particle.leaf && leafDetected(particle.leaf)) { color = COLOURS.detectedLeaf; alpha = .95; }
+      if (particle.leaf && diseasedDetected(particle.leaf)) { color = COLOURS.disease; alpha = .95; }
       context.fillStyle = color;
       context.globalAlpha = alpha;
       dot(particle.x, particle.y, particle.radius);
