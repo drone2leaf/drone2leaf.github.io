@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Drone2Leaf explores plant health through drone imagery. Watch our indoor drone flight at Western Sydney University." />
+    <meta name="theme-color" content="#071713" />
+    <title>Drone2Leaf | From the glasshouse to the leaf</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/glasshouse.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-header>
+      <a class="brand" href="#home" aria-label="Drone2Leaf home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>Drone2Leaf</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="visually-hidden" data-nav-label>Open navigation</span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="#flight">Flight video</a>
+        <a href="#vision">Drone to leaf</a>
+        <a href="#first-look">First look</a>
+        <a class="nav-cta" href="https://github.com/drone2leaf/drone2leaf.github.io">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="home">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Plant health. A new perspective.</p>
+          <h1>From the glasshouse<br />to <em>the leaf.</em></h1>
+          <p class="hero-lede">A closer look at plants, from above. Drone2Leaf brings drone imaging and plant health research together in protected cropping environments.</p>
+          <a class="button button-primary" href="#flight">Watch the flight <span aria-hidden="true">↘</span></a>
+          <div class="hero-partners" aria-label="Project collaboration">
+            <span>Australian Plant Phenomics Network</span>
+            <span>ANU <i aria-hidden="true">×</i> Western Sydney University</span>
+          </div>
+        </div>
+        <figure class="flight-feature" id="flight" aria-labelledby="flight-title">
+          <div class="feature-topline"><span class="live-dot" aria-hidden="true"></span><span>Inside the glasshouse</span><span>WSU / Australia</span></div>
+          <div class="video-frame">
+            <a class="video-poster" href="https://youtu.be/18SfkeW88w8" data-play-video aria-label="Play the Drone2Leaf glasshouse flight video">
+              <img src="assets/images/flight-video.jpg" alt="" width="1280" height="720" fetchpriority="high" />
+              <span class="video-play" aria-hidden="true"><span>▶</span></span>
+              <span class="video-play-label" aria-hidden="true">Play flight film</span>
+            </a>
+          </div>
+          <figcaption>
+            <div><p class="video-kicker">The flight film</p><h2 id="flight-title">Drone2Leaf in the glasshouse.</h2></div>
+            <a href="https://youtu.be/18SfkeW88w8" target="_blank" rel="noopener noreferrer" aria-label="Watch the Drone2Leaf flight video on YouTube (opens in a new tab)">Watch on YouTube <span aria-hidden="true">↗</span></a>
+          </figcaption>
+        </figure>
+        <div class="hero-bottom"><span>Drone imaging / Plant phenomics</span><a href="#vision">Explore the illustration <span aria-hidden="true">↓</span></a></div>
+      </section>
+
+      <section class="vision section" id="vision" aria-labelledby="vision-title">
+        <div class="section-heading">
+          <div><p class="section-index">01 / DRONE TO LEAF</p><h2 id="vision-title">A whole glasshouse.<br /><em>One leaf at a time.</em></h2></div>
+          <p class="section-aside">An illustration of our research goal: from a drone flying among plants to individual leaves and signs of disease.</p>
+        </div>
+        <div class="scene-card" data-glasshouse>
+          <div class="scene-toolbar">
+            <span class="scene-title"><span class="live-dot" aria-hidden="true"></span>Drone2Leaf / Project illustration</span>
+            <button class="scene-toggle" type="button" data-scene-toggle aria-label="Pause animation" hidden><span data-toggle-icon aria-hidden="true">Ⅱ</span><span data-toggle-label>Pause</span></button>
+          </div>
+          <div class="particle-visual" role="img" aria-label="Particle illustration: a drone flies inside a glasshouse above rows of plants, individual leaves are outlined, then leaves showing disease are highlighted in amber.">
+            <canvas width="960" height="500" aria-hidden="true"></canvas>
+            <noscript><p class="scene-fallback">Drone flight → Individual leaves → Disease detection</p></noscript>
+          </div>
+          <div class="scene-legend" aria-label="Illustration colour key"><span><i class="legend-leaf" aria-hidden="true"></i>Individual leaf</span><span><i class="legend-disease" aria-hidden="true"></i>Signs of disease</span><span class="interaction-hint">Move your pointer through the particles</span></div>
+          <div class="scene-stages" role="group" aria-label="Choose an illustration stage">
+            <button type="button" data-scene-stage="0" aria-pressed="true"><span class="stage-number">01</span><span>Drone flight</span><span class="stage-progress" aria-hidden="true"></span></button>
+            <button type="button" data-scene-stage="1" aria-pressed="false"><span class="stage-number">02</span><span>Individual leaves</span><span class="stage-progress" aria-hidden="true"></span></button>
+            <button type="button" data-scene-stage="2" aria-pressed="false"><span class="stage-number">03</span><span>Disease detection</span><span class="stage-progress" aria-hidden="true"></span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="first-look section" id="first-look" aria-labelledby="first-look-title">
+        <div class="section-heading">
+          <div><p class="section-index">02 / FIRST LOOK</p><h2 id="first-look-title">The view <em>from above.</em></h2></div>
+          <p class="section-aside">One raw image from the glasshouse. A canopy of plants, and a closer look to come.</p>
+        </div>
+        <figure class="raw-preview" data-raw-scan>
+          <div class="raw-image-frame">
+            <img src="assets/images/DJI_20260416114316_0027_D.JPG" alt="Raw drone photograph looking down the glasshouse aisle between dense rows of green pepper plants" width="5280" height="3956" loading="lazy" />
+            <span class="raw-image-label">Original drone image</span>
+            <div class="raw-scan-line" aria-hidden="true"></div>
+          </div>
+          <figcaption>
+            <span>Drone2Leaf / Glasshouse imagery</span>
+            <button type="button" class="scan-replay" data-scan-replay hidden>Replay scan <span aria-hidden="true">↻</span></button>
+          </figcaption>
+          <div class="scan-announcement" data-scan-announcement>
+            <span class="announcement-mark" aria-hidden="true">↗</span>
+            <div><p class="video-kicker">A closer look is coming</p><h3>Initial results in the next update.</h3></div>
+          </div>
+        </figure>
+      </section>
+
+      <section class="project section" id="project" aria-labelledby="project-title">
+        <div class="project-intro"><p class="section-index">03 / THE PROJECT</p><h2 id="project-title">A shared view<br />of <em>plant health.</em></h2></div>
+        <div class="project-copy">
+          <p class="project-lede">Our team has completed a major round of indoor drone data collection at Western Sydney University.</p>
+          <p>Flying in a glasshouse means navigating confined spaces and capturing plants from different heights and angles. The flight film offers a glimpse of that work.</p>
+          <div class="project-people">
+            <div><span>Project lead</span><strong>Saswat Panda</strong><p>APPN · ANU Node</p></div>
+            <div><span>Operations &amp; deployment lead</span><strong>Ming Dao Chia</strong><p>Drone2Leaf</p></div>
+          </div>
+          <p class="project-credit">Led through the Australian Plant Phenomics Network (APPN) ANU Node, in collaboration with the WSU APPN Node, with support from the APPN SIF program.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>Drone2Leaf</span></a><p>From the glasshouse to the leaf.</p></div>
+      <div class="footer-links"><a href="https://github.com/drone2leaf/drone2leaf.github.io">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.plantphenomics.org.au/">APPN <span aria-hidden="true">↗</span></a><a href="#home">Back to top ↑</a></div>
+      <p class="copyright">© <span data-year>2026</span> Drone2Leaf</p>
+    </footer>
+  </body>
+</html>
