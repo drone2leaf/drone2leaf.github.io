@@ -26,8 +26,6 @@ figure, p { margin: 0; }
 .site-nav { display: flex; align-items: center; gap: 28px; }
 .site-nav a { color: #ffffffc4; font-size: .82rem; font-weight: 600; text-decoration: none; }
 .site-nav a:hover { color: var(--white); }
-.site-nav .nav-cta { padding: 10px 16px; border-radius: 8px; color: var(--forest); background: var(--lime); }
-.nav-cta span { margin-left: 10px; }
 .nav-toggle { display: none; width: 42px; height: 42px; border: 0; border-radius: 8px; background: #ffffff16; }
 .nav-toggle > span:not(.visually-hidden) { display: block; width: 19px; height: 1px; margin: 5px auto; background: var(--white); }
 .hero { position: relative; display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 56px; padding: 192px max(24px, calc((100% - var(--max)) / 2)) 0; overflow: hidden; background: var(--forest); color: var(--white); }
