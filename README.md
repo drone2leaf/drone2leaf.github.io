@@ -26,6 +26,12 @@ The project is supported by the APPN SIF program, the Central Data Team, and by 
 
 The supplied mark in `assets/images/d2l_.jpg` is traced into SVG paths in `assets/images/d2l-logo.svg` and used in the header and footer, with a matching SVG favicon. The original image remains available in the assets folder.
 
+## Shared-link previews
+
+The page includes Open Graph metadata with an absolute URL to `assets/images/d2l-social-preview.png` (1200 × 630), plus a square PNG logo for summary cards. These PNG images are rendered from the existing SVG logo. Shared-link thumbnails use this metadata rather than the browser favicon. PNG, ICO and Apple touch icon fallbacks are also included.
+
+Publish the HTML and image files together so preview crawlers can retrieve the images. Sharing apps may retain an earlier preview until their cache is refreshed.
+
 ## Animation controls
 
 The three stages advance automatically. Select a stage to view it, or pause the animation. Starting leaves are light green; detected leaves are dark green with blue bounding boxes. Disease highlights and boxes are amber. Pointer movement gently disperses nearby particles. Off-screen animation stops, and reduced-motion settings show a still illustration with manual stage selection. The raw-image scan plays when it enters view and can be replayed; reduced-motion visitors see the update message immediately.
