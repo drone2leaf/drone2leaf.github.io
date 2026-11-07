@@ -3,7 +3,6 @@ const nav = document.querySelector('#site-nav');
 const navToggle = document.querySelector('.nav-toggle');
 const navLabel = document.querySelector('[data-nav-label]');
 const year = document.querySelector('[data-year]');
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 if (year) year.textContent = new Date().getFullYear();
 
@@ -60,75 +59,3 @@ videoPoster?.addEventListener('click', (event) => {
   videoPoster.parentElement.replaceChildren(player);
   player.focus();
 });
-
-// Start the raw-image scan only after the photograph has loaded and is in view.
-const rawPreview = document.querySelector('[data-raw-scan]');
-if (rawPreview) {
-  const image = rawPreview.querySelector('img');
-  const line = rawPreview.querySelector('.raw-scan-line');
-  const announcement = rawPreview.querySelector('[data-scan-announcement]');
-  const replay = rawPreview.querySelector('[data-scan-replay]');
-  let visible = false;
-  let started = false;
-  let scanObserver;
-
-  rawPreview.classList.add('scan-ready');
-  announcement.setAttribute('aria-hidden', 'true');
-
-  function finishScan() {
-    rawPreview.classList.remove('is-scanning');
-    rawPreview.classList.add('scan-complete');
-    announcement.removeAttribute('aria-hidden');
-    replay.hidden = reducedMotion.matches;
-    started = true;
-  }
-
-  function startScan() {
-    if (reducedMotion.matches) {
-      finishScan();
-      return;
-    }
-    if (!visible || started || !image.complete || !image.naturalWidth) return;
-    started = true;
-    rawPreview.classList.remove('scan-complete');
-    announcement.setAttribute('aria-hidden', 'true');
-    rawPreview.classList.add('is-scanning');
-  }
-
-  function syncVisibility() {
-    rawPreview.classList.toggle('scan-visible', visible && !document.hidden);
-    startScan();
-  }
-
-  line.addEventListener('animationend', (event) => {
-    if (event.animationName === 'raw-scan') finishScan();
-  });
-  image.addEventListener('load', startScan);
-  image.addEventListener('error', finishScan);
-  replay.addEventListener('click', () => {
-    rawPreview.classList.remove('is-scanning', 'scan-complete');
-    announcement.setAttribute('aria-hidden', 'true');
-    replay.hidden = true;
-    // Reset the CSS animation before adding the scanning class again.
-    void line.offsetWidth;
-    started = false;
-    startScan();
-  });
-  reducedMotion.addEventListener('change', () => {
-    if (reducedMotion.matches) finishScan();
-    else replay.hidden = !rawPreview.classList.contains('scan-complete');
-  });
-  document.addEventListener('visibilitychange', syncVisibility);
-
-  if ('IntersectionObserver' in window) {
-    scanObserver = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      syncVisibility();
-    }, { threshold: 0.15 });
-    scanObserver.observe(rawPreview.querySelector('.raw-image-frame'));
-  } else {
-    visible = true;
-    syncVisibility();
-  }
-  if (reducedMotion.matches) finishScan();
-}

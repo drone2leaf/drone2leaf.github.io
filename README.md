@@ -2,7 +2,7 @@
 
 Static project website for [Drone2Leaf](https://github.com/drone2leaf/drone2leaf_models), designed for GitHub Pages.
 
-The site features the [Drone2Leaf glasshouse flight video](https://youtu.be/18SfkeW88w8), an interactive particle illustration, and an original glasshouse drone image with a scanning line. The video uses its thumbnail as a local preview and loads the YouTube player when clicked. Once the image scan completes, “Initial results in the next update” appears underneath.
+The site features the [Drone2Leaf glasshouse flight video](https://youtu.be/18SfkeW88w8), an interactive particle illustration, and a gallery of two glasshouse drone images with their supplied leaf masks. The video uses its thumbnail as a local preview and loads the YouTube player when clicked. The gallery reveals the coloured mask preview and then the black-and-white mask with a scanning line.
 
 The particle illustration shows drone flight inside a glasshouse, individual leaves, then leaves showing signs of disease. It depicts the research goal; it is not a model output or a validation result.
 
@@ -34,7 +34,17 @@ Publish the HTML and image files together so preview crawlers can retrieve the i
 
 ## Animation controls
 
-The three stages advance automatically. Select a stage to view it, or pause the animation. Starting leaves are light green; detected leaves are dark green with blue bounding boxes. Disease highlights and boxes are amber. Pointer movement gently disperses nearby particles. Off-screen animation stops, and reduced-motion settings show a still illustration with manual stage selection. The raw-image scan plays when it enters view and can be replayed; reduced-motion visitors see the update message immediately.
+The particle illustration's three stages advance automatically. Select a stage to view it, or pause the animation. Starting leaves are light green; detected leaves are dark green with blue bounding boxes. Disease highlights and boxes are amber. Pointer movement gently disperses nearby particles. Off-screen animation stops, and reduced-motion settings show a still illustration with manual stage selection.
+
+## Drone-image and mask gallery
+
+Each example starts with its original drone photograph, then a top-to-bottom scan reveals the coloured mask preview, followed by another scan revealing the black-and-white mask. The completed view stays visible. Use the previous/next arrows to change examples, the stage buttons to inspect a view, or the pause/resume/replay control. Left/right keyboard arrows also change examples when the gallery has focus. Animation pauses off screen and in hidden tabs. Reduced-motion visitors select stages manually.
+
+The source files are kept in `assets/images/DJI_20260416114316_0027_D/` and `assets/images/DJI_20260521145932_0042_D/`. The website loads 1920-pixel copies; the full-resolution originals and supplied masks remain unchanged. Binary preview copies use nearest-neighbour resizing to preserve black-and-white pixels. To regenerate these copies with Python and Pillow installed:
+
+```bash
+python scripts/build_scan_previews.py
+```
 
 ## Page-view counter
 

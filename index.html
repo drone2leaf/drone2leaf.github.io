@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/glasshouse.js" defer></script>
+    <script src="assets/js/scan-gallery.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -110,21 +111,30 @@
       <section class="first-look section" id="first-look" aria-labelledby="first-look-title">
         <div class="section-heading">
           <div><p class="section-index">02 / FIRST LOOK</p><h2 id="first-look-title">The view <em>from above.</em></h2></div>
-          <p class="section-aside">One raw image from the glasshouse. A canopy of plants, and a closer look to come.</p>
+          <p class="section-aside">Explore two glasshouse images, from the original drone photograph to coloured leaf masks and a black-and-white mask.</p>
         </div>
-        <figure class="raw-preview" data-raw-scan>
-          <div class="raw-image-frame">
-            <img src="assets/images/DJI_20260416114316_0027_D.JPG" alt="Raw drone photograph looking down the glasshouse aisle between dense rows of green pepper plants" width="5280" height="3956" loading="lazy" />
-            <span class="raw-image-label">Original drone image</span>
-            <div class="raw-scan-line" aria-hidden="true"></div>
+        <figure class="scan-gallery" data-scan-gallery role="region" aria-roledescription="carousel" aria-label="Drone images and leaf masks" tabindex="0">
+          <div class="gallery-toolbar">
+            <span class="gallery-title"><span class="live-dot" aria-hidden="true"></span>Drone2Leaf / Leaf masks</span>
+            <span class="gallery-count" data-gallery-count>Image 1 of 2</span>
+          </div>
+          <div class="gallery-image-frame" id="scan-gallery-image" data-gallery-viewport role="img" aria-label="Original drone image 1 looking down the glasshouse aisle between rows of plants">
+            <img class="gallery-image" data-gallery-image="0" src="assets/images/DJI_20260416114316_0027_D/DJI_20260416114316_0027_D_web.webp" alt="" width="1920" height="1439" loading="lazy" decoding="async" />
+            <img class="gallery-image gallery-mask" data-gallery-image="1" src="assets/images/DJI_20260416114316_0027_D/DJI_20260416114316_0027_D_mask_preview_web.webp" alt="" width="1920" height="1439" loading="lazy" decoding="async" />
+            <img class="gallery-image gallery-mask" data-gallery-image="2" src="assets/images/DJI_20260416114316_0027_D/DJI_20260416114316_0027_D_binary_mask_web.png" alt="" width="1920" height="1439" loading="lazy" decoding="async" />
+            <span class="gallery-image-label" data-gallery-stage-label>Original drone image</span>
+            <div class="gallery-scan-line" data-gallery-scan-line aria-hidden="true" hidden></div>
+            <button type="button" class="gallery-arrow gallery-arrow-previous" data-gallery-previous aria-label="Previous drone image" aria-controls="scan-gallery-image" hidden><span aria-hidden="true">‹</span></button>
+            <button type="button" class="gallery-arrow gallery-arrow-next" data-gallery-next aria-label="Next drone image" aria-controls="scan-gallery-image" hidden><span aria-hidden="true">›</span></button>
           </div>
           <figcaption>
-            <span>Drone2Leaf / Glasshouse imagery</span>
-            <button type="button" class="scan-replay" data-scan-replay hidden>Replay scan <span aria-hidden="true">↻</span></button>
+            <p class="gallery-status" data-gallery-status aria-live="polite" aria-atomic="true">Image 1 of 2 · Original drone image</p>
+            <button type="button" class="gallery-playback" data-gallery-playback hidden>Pause scan</button>
           </figcaption>
-          <div class="scan-announcement" data-scan-announcement>
-            <span class="announcement-mark" aria-hidden="true">↗</span>
-            <div><p class="video-kicker">A closer look is coming</p><h3>Initial results in the next update.</h3></div>
+          <div class="gallery-stages" role="group" aria-label="Choose an image stage" data-gallery-stages hidden>
+            <button type="button" data-gallery-stage="0" aria-pressed="true"><span>01</span>Original image</button>
+            <button type="button" data-gallery-stage="1" aria-pressed="false"><span>02</span>Mask preview</button>
+            <button type="button" data-gallery-stage="2" aria-pressed="false"><span>03</span>Black &amp; white mask</button>
           </div>
         </figure>
       </section>
@@ -132,8 +142,8 @@
       <section class="project section" id="project" aria-labelledby="project-title">
         <div class="project-intro"><p class="section-index">03 / THE PROJECT</p><h2 id="project-title">A shared view<br />of <em>plant health.</em></h2></div>
         <div class="project-copy">
-          <p class="project-lede">Our team has completed a major round of indoor drone data collection at Western Sydney University.</p>
-          <p>Flying in a glasshouse means navigating confined spaces and capturing plants from different heights and angles. The flight film offers a glimpse of that work.</p>
+          <p class="project-lede">Our team has completed glasshouse visits and drone data collection at Western Sydney University, AI-assisted data labelling, and segmentation model training.</p>
+          <p>The gallery above shows the progression from original drone imagery to coloured leaf-mask previews and black-and-white segmentation masks.</p>
           <div class="project-people">
             <div><span>Project lead</span><strong>Mr. Saswat Panda</strong><p>APPN · ANU Node</p></div>
             <div><span>Operation and Automation Lead</span><strong>Mr. Ming Dao Chia</strong><p>Drone2Leaf</p></div>
