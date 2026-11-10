@@ -99,7 +99,7 @@ h1 em, .section h2 em { color: var(--lime); font-family: Georgia, "Times New Rom
 .stage-progress { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; transform: scaleX(var(--progress, 0)); transform-origin: left; background: #488365; }
 .scene-stages button[data-scene-stage="2"] .stage-progress { background: #bc651e; }
 .first-look { padding: 0 0 100px; }
-.scan-gallery { overflow: hidden; border: 1px solid #24413426; border-radius: 18px; background: var(--forest); color: var(--white); }
+.scan-gallery { --gallery-window-height: 100vh; --gallery-top-space: 112px; --gallery-ui-height: 190px; width: min(100%, max(220px, calc((var(--gallery-window-height) - var(--gallery-top-space) - var(--gallery-ui-height) - 24px) * 1.3342599))); margin-inline: auto; scroll-margin-bottom: 24px; container-name: scan-gallery; container-type: inline-size; overflow: hidden; border: 1px solid #24413426; border-radius: 18px; background: var(--forest); color: var(--white); }
 .scan-gallery:focus-visible { outline: 3px solid #3489b5; outline-offset: 5px; }
 .gallery-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 25px; color: #abc1b4; font-size: .7rem; }
 .gallery-title { display: inline-flex; align-items: center; gap: 9px; }
@@ -187,14 +187,6 @@ h1 em, .section h2 em { color: var(--lime); font-family: Georgia, "Times New Rom
   .scene-legend .interaction-hint { display: none; }
   .scene-stages button { align-items: flex-start; flex-direction: column; gap: 4px; padding: 15px 13px; font-size: .76rem; }
   .first-look { padding-bottom: 70px; }
-  .gallery-toolbar { padding: 14px 15px; font-size: .65rem; }
-  .gallery-image-label { top: 12px; left: 12px; padding: 5px 8px; font-size: .6rem; }
-  .gallery-arrow { width: 44px; height: 44px; }
-  .gallery-arrow-previous { left: 10px; }
-  .gallery-arrow-next { right: 10px; }
-  .scan-gallery > figcaption { padding: 13px 15px; font-size: .66rem; }
-  .gallery-playback { min-width: 90px; font-size: .66rem; }
-  .gallery-stages button { align-items: flex-start; flex-direction: column; gap: 5px; min-height: 80px; padding: 14px 12px; font-size: .73rem; }
   .project { grid-template-columns: 1fr; padding: 58px 0 70px; gap: 28px; }
   .site-footer { grid-template-columns: 1fr; }
   .footer-links { flex-wrap: wrap; }
@@ -213,6 +205,26 @@ h1 em, .section h2 em { color: var(--lime); font-family: Georgia, "Times New Rom
   .project-people span { font-size: .61rem; }
   .collaborator-list { gap: 10px 15px; }
   .collaborator-list li { font-size: .8rem; }
+}
+@supports (height: 100dvh) {
+  .scan-gallery { --gallery-window-height: 100dvh; }
+}
+@container scan-gallery (max-width: 640px) {
+  .gallery-toolbar { padding: 14px 15px; font-size: .65rem; }
+  .gallery-image-label { top: 12px; left: 12px; padding: 5px 8px; font-size: .6rem; }
+  .gallery-arrow { width: 44px; height: 44px; }
+  .gallery-arrow-previous { left: 10px; }
+  .gallery-arrow-next { right: 10px; }
+  .scan-gallery > figcaption { padding: 13px 15px; font-size: .66rem; }
+  .gallery-playback { min-width: 90px; font-size: .66rem; }
+  .gallery-stages button { align-items: flex-start; flex-direction: column; gap: 5px; min-height: 80px; padding: 14px 12px; font-size: .73rem; }
+}
+@media (max-height: 600px) {
+  html { scroll-padding-top: 100px; }
+  .gallery-toolbar { padding: 8px 12px; gap: 8px; font-size: .6rem; }
+  .scan-gallery > figcaption { min-height: 49px; justify-content: flex-end; padding: 7px 12px; }
+  .gallery-status { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+  .gallery-stages button { min-height: 60px; gap: 3px; padding: 10px 8px; font-size: .72rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

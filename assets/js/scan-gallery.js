@@ -14,6 +14,9 @@
   const next = gallery.querySelector('[data-gallery-next]');
   const stageGroup = gallery.querySelector('[data-gallery-stages]');
   const stageButtons = [...gallery.querySelectorAll('[data-gallery-stage]')];
+  const toolbar = gallery.querySelector('.gallery-toolbar');
+  const caption = gallery.querySelector('figcaption');
+  const header = document.querySelector('[data-header]');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const stageNames = ['Original drone image', 'Mask preview', 'Black & white mask'];
   const examples = ['DJI_20260416114316_0027_D', 'DJI_20260521145932_0042_D'].map((id) => {
@@ -30,10 +33,31 @@
   let visible = false;
   let frame = 0;
   let lastTime = 0;
+  let sizingFrame = 0;
   let error = '';
   const failedStages = new Set();
   const decodedSources = new Map();
   const decodingSources = new Map();
+
+  function fitGallery() {
+    sizingFrame = 0;
+    const style = getComputedStyle(gallery);
+    const controlsHeight = [toolbar, caption, stageGroup].reduce((height, element) => height + element.getBoundingClientRect().height, 0);
+    const borderHeight = parseFloat(style.borderTopWidth) + parseFloat(style.borderBottomWidth);
+    const scrollPadding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    const headerSpace = (header?.getBoundingClientRect().bottom || 0) + 16;
+    const values = {
+      '--gallery-ui-height': `${Math.ceil(controlsHeight + borderHeight)}px`,
+      '--gallery-top-space': `${Math.ceil(Math.max(scrollPadding, headerSpace))}px`
+    };
+    Object.entries(values).forEach(([name, value]) => {
+      if (gallery.style.getPropertyValue(name) !== value) gallery.style.setProperty(name, value);
+    });
+  }
+
+  function scheduleFit() {
+    if (!sizingFrame) sizingFrame = requestAnimationFrame(fitGallery);
+  }
 
   function imageReady(index) {
     const image = images[index];
@@ -116,6 +140,7 @@
 
   function syncPlayback() {
     updateControls();
+    scheduleFit();
     if (canAnimate() && !frame) {
       lastTime = 0;
       frame = requestAnimationFrame(animate);
@@ -206,6 +231,25 @@
       showExample(example + (event.key === 'ArrowLeft' ? -1 : 1));
     }
   });
+  gallery.addEventListener('focusin', () => {
+    // Keep the entire fitted gallery clear of the fixed navigation when a
+    // visitor uses its arrows, playback button or stage controls.
+    requestAnimationFrame(() => {
+      const bounds = gallery.getBoundingClientRect();
+      const topSpace = parseFloat(getComputedStyle(gallery).getPropertyValue('--gallery-top-space')) || 112;
+      if (bounds.top < topSpace - 1 || bounds.bottom > window.innerHeight - 24) {
+        gallery.scrollIntoView({ block: 'nearest', behavior: motion.matches ? 'instant' : 'smooth' });
+      }
+    });
+  });
+  if ('ResizeObserver' in window) {
+    const sizingObserver = new ResizeObserver(scheduleFit);
+    [toolbar, caption, stageGroup, header].forEach((element) => {
+      if (element) sizingObserver.observe(element);
+    });
+  }
+  window.addEventListener('resize', scheduleFit, { passive: true });
+  window.visualViewport?.addEventListener('resize', scheduleFit, { passive: true });
   document.addEventListener('visibilitychange', syncPlayback);
   motion.addEventListener('change', () => {
     if (motion.matches && phase === 'scan') {
@@ -228,6 +272,7 @@
   }
 
   render();
+  fitGallery();
   images.forEach((image, index) => {
     if (image.complete && image.naturalWidth > 0) decodeImage(index);
   });

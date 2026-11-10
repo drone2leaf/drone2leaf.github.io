@@ -40,6 +40,8 @@ The particle illustration's three stages advance automatically. Select a stage t
 
 Each example starts with its original drone photograph, then a top-to-bottom scan reveals the coloured mask preview, followed by another scan revealing the black-and-white mask. The completed view stays visible. Use the previous/next arrows to change examples, the stage buttons to inspect a view, or the pause/resume/replay control. Left/right keyboard arrows also change examples when the gallery has focus. Animation pauses off screen and in hidden tabs. Reduced-motion visitors select stages manually.
 
+The gallery scales to the available browser height and width while preserving the full image aspect ratio. It measures the toolbar and control rows, leaves space for the fixed site navigation, and uses compact controls in shorter windows so the stage buttons remain visible at normal browser zoom.
+
 The source files are kept in `assets/images/DJI_20260416114316_0027_D/` and `assets/images/DJI_20260521145932_0042_D/`. The website loads 1920-pixel copies; the full-resolution originals and supplied masks remain unchanged. Binary preview copies use nearest-neighbour resizing to preserve black-and-white pixels. To regenerate these copies with Python and Pillow installed:
 
 ```bash
