@@ -1,5 +1,6 @@
-"""Create web-sized copies of the supplied drone images and masks."""
+"""Create web-sized copies of all gallery examples or selected image IDs."""
 
+import argparse
 from pathlib import Path
 
 from PIL import Image
@@ -10,11 +11,22 @@ EXAMPLES = ("DJI_20260416114316_0027_D", "DJI_20260521145932_0042_D")
 PREVIEW_WIDTH = 1920
 
 
-def build_previews():
-    for example in EXAMPLES:
+def build_previews(examples=EXAMPLES):
+    for example in examples:
         directory = IMAGE_ROOT / example
-        for suffix, extension in (("", ".JPG"), ("_mask_preview", ".png"), ("_binary_mask", ".png")):
-            source = directory / f"{example}{suffix}{extension}"
+        sources = [
+            (suffix, directory / f"{example}{suffix}{extension}")
+            for suffix, extension in (("", ".JPG"), ("_mask_preview", ".png"), ("_binary_mask", ".png"))
+        ]
+        # Check alignment before replacing any of this example's web copies.
+        source_size = None
+        for _, source in sources:
+            with Image.open(source) as image:
+                if source_size is not None and image.size != source_size:
+                    raise ValueError(f"{source.name} has size {image.size}; expected {source_size}")
+                source_size = image.size
+
+        for suffix, source in sources:
             with Image.open(source) as image:
                 size = (PREVIEW_WIDTH, round(image.height * PREVIEW_WIDTH / image.width))
                 if suffix == "_binary_mask":
@@ -29,4 +41,13 @@ def build_previews():
 
 
 if __name__ == "__main__":
-    build_previews()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--example", action="append", choices=EXAMPLES, dest="examples",
+        help="Regenerate only this image ID; repeat to select multiple examples. Defaults to both.",
+    )
+    args = parser.parse_args()
+    try:
+        build_previews(args.examples or EXAMPLES)
+    except (OSError, ValueError) as error:
+        parser.exit(1, f"Could not build web previews: {error}\n")
