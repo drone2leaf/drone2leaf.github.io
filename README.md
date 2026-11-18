@@ -50,6 +50,8 @@ python scripts/build_scan_previews.py --example DJI_20260416114316_0027_D
 
 Omit `--example` to rebuild both images. See [scripts/README.md](scripts/README.md) for setup, source filenames, output formats, and preview instructions.
 
+To regenerate the 15-second coloured scan GIF and 10-second original-to-black-and-white GIF from the updated full-resolution sources, use `scripts/build_scan_gifs.py`. See the [GIF generation instructions](scripts/README.md#regenerate-the-linkedin-scan-gifs) for commands and timings.
+
 ## Page-view counter
 
 The footer uses a shared [Hits.sh](https://github.com/silentsoft/hits) badge for `drone2leaf.github.io`. It starts recording badge requests when the site is published; it does not recover earlier visits or count unique people. Local previews do not load the live badge or add to the total. If the service is unavailable, the footer shows “Page views: unavailable”.
