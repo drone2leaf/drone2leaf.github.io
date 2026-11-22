@@ -91,7 +91,7 @@
           </div>
           <div class="particle-visual" role="img" aria-label="Particle illustration: a drone flies inside a glasshouse above light green plants, detected leaves turn dark green with blue bounding boxes, then leaves showing disease are highlighted in amber.">
             <canvas width="960" height="500" aria-hidden="true"></canvas>
-            <noscript><p class="scene-fallback">Drone flight → Individual leaves → Disease detection</p></noscript>
+            <noscript><p class="scene-fallback">Drone flight* → Individual leaves → Disease detection**</p></noscript>
           </div>
           <div class="scene-legend" aria-label="Illustration colour key">
             <span><i class="legend-leaf" aria-hidden="true"></i>Leaves</span>
@@ -101,9 +101,9 @@
             <span class="interaction-hint">Move your pointer through the particles</span>
           </div>
           <div class="scene-stages" role="group" aria-label="Choose an illustration stage">
-            <button type="button" data-scene-stage="0" aria-pressed="true"><span class="stage-number">01</span><span>Drone flight</span><span class="stage-progress" aria-hidden="true"></span></button>
+            <button type="button" data-scene-stage="0" aria-pressed="true" aria-describedby="flight-pilot-note"><span class="stage-number">01</span><span>Drone flight<sup class="scene-note-marker" title="Drones are flown by experienced pilots." aria-hidden="true">*</sup></span><span class="stage-progress" aria-hidden="true"></span></button>
             <button type="button" data-scene-stage="1" aria-pressed="false"><span class="stage-number">02</span><span>Individual leaves</span><span class="stage-progress" aria-hidden="true"></span></button>
-            <button type="button" data-scene-stage="2" aria-pressed="false"><span class="stage-number">03</span><span>Disease detection</span><span class="stage-progress" aria-hidden="true"></span></button>
+            <button type="button" data-scene-stage="2" aria-pressed="false" aria-describedby="disease-research-note"><span class="stage-number">03</span><span>Disease detection<sup class="scene-note-marker" title="Important: PlantDis is a research project. Its predictions are not a substitute for diagnosis by a plant pathologist or agronomist. Do not use the output alone to make treatment, chemical application, quarantine, or biosecurity decisions." aria-hidden="true">**</sup></span><span class="stage-progress" aria-hidden="true"></span></button>
           </div>
         </div>
       </section>
@@ -183,6 +183,13 @@
     <footer class="site-footer">
       <div><a class="brand" href="#home"><img class="brand-logo" src="assets/images/d2l-logo.svg" alt="" width="40" height="40" /><span>Drone2Leaf</span></a><p>From the glasshouse to the leaf.</p></div>
       <div class="footer-links"><a href="https://github.com/drone2leaf/drone2leaf.github.io">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.plantphenomics.org.au/">APPN <span aria-hidden="true">↗</span></a><a href="#home">Back to top ↑</a></div>
+      <section class="footer-notes" aria-label="Project notes">
+        <p id="flight-pilot-note"><span aria-hidden="true">*</span> Drones are flown by experienced pilots.</p>
+        <div class="footer-research-note" id="disease-research-note" role="note">
+          <p class="footer-note-heading"><span aria-hidden="true">**</span> <strong>Important</strong></p>
+          <p>PlantDis is a research project. Its predictions are not a substitute for diagnosis by a plant pathologist or agronomist. Do not use the output alone to make treatment, chemical application, quarantine, or biosecurity decisions.</p>
+        </div>
+      </section>
       <div class="footer-bottom">
         <p class="copyright">© <span data-year>2026</span> Drone2Leaf</p>
         <a class="view-counter" href="https://hits.sh/drone2leaf.github.io/" aria-label="View Drone2Leaf page-view statistics">

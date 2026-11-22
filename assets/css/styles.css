@@ -95,6 +95,7 @@ h1 em, .section h2 em { color: var(--lime); font-family: Georgia, "Times New Rom
 .scene-stages button[aria-pressed="true"] { background: #d9e8d4; color: #234b36; }
 .scene-stages button:hover { background: #dfeada; }
 .scene-stages button:focus-visible { z-index: 1; outline-offset: -5px; }
+.scene-note-marker { margin-left: 2px; font-size: .75em; cursor: help; }
 .stage-number { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; color: #71846d; font-size: .65rem; }
 .stage-progress { position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; transform: scaleX(var(--progress, 0)); transform-origin: left; background: #488365; }
 .scene-stages button[data-scene-stage="2"] .stage-progress { background: #bc651e; }
@@ -149,6 +150,9 @@ h1 em, .section h2 em { color: var(--lime); font-family: Georgia, "Times New Rom
 .footer-links { display: flex; align-items: center; gap: 28px; color: #c1cec7; font-size: .75rem; }
 .footer-links a { text-decoration: none; }
 .footer-links a:hover { color: var(--lime); }
+.footer-notes { grid-column: 1 / -1; display: grid; gap: 18px; padding-top: 24px; border-top: 1px solid #ffffff20; color: #c1cec7; font-size: .875rem; }
+.footer-research-note { max-width: 1000px; font-size: 1rem; }
+.footer-note-heading { margin-bottom: 6px; color: var(--lime); font-size: .875rem; }
 .footer-bottom { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 22px; border-top: 1px solid #ffffff20; }
 .copyright { color: #aabeb1; font-size: .65rem; }
 .view-counter { display: inline-flex; align-items: center; min-height: 20px; color: #aabeb1; font-size: .7rem; text-decoration: none; }

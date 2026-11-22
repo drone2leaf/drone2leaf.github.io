@@ -36,6 +36,8 @@ Publish the HTML and image files together so preview crawlers can retrieve the i
 
 The particle illustration's three stages advance automatically. Select a stage to view it, or pause the animation. Starting leaves are light green; detected leaves are dark green with blue bounding boxes. Disease highlights and boxes are amber. Pointer movement gently disperses nearby particles. Off-screen animation stops, and reduced-motion settings show a still illustration with manual stage selection.
 
+The asterisks beside Drone flight (*) and Disease detection (**) have hover descriptions. Full notes in the footer explain that experienced pilots fly the drones and include the PlantDis research disclaimer. The stage buttons reference these notes for screen-reader users; the footer keeps the text available on touch devices.
+
 ## Drone-image and mask gallery
 
 Each example starts with its original drone photograph, then a top-to-bottom scan reveals the coloured mask preview, followed by another scan revealing the black-and-white mask. The completed view stays visible. Use the previous/next arrows to change examples, the stage buttons to inspect a view, or the pause/resume/replay control. Left/right keyboard arrows also change examples when the gallery has focus. Animation pauses off screen and in hidden tabs. Reduced-motion visitors select stages manually.
